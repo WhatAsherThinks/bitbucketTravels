@@ -5,6 +5,7 @@
  */
 package com.sg.blogcms.dto;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,22 +15,50 @@ import java.util.Objects;
 public class User {
 
     private int userId;
-    private int userType;
     private String username;
     private String email;
     private String userPassword;
     private String userAvatar;
+    private boolean enabled;
+    
+    private ArrayList<String> authorities = new ArrayList<>();
 
-    public int getUserType() {
-        return userType;
-    }
-
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public User(int userId, String username, String email, String userPassword, String userAvatar, boolean enabled) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.userPassword = userPassword;
+        this.userAvatar = userAvatar;
+        this.enabled = enabled;
+        
     }
 
     public User() {
     }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+    
+    
+    
+    public ArrayList<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(ArrayList<String> authorities) {
+        this.authorities = authorities;
+    }
+   
+    
+    public void addAuthority(String authority) {
+        authorities.add(authority);
+    }
+
 
     public int getUserId() {
         return userId;
